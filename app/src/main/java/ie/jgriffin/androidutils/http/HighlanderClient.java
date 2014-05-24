@@ -40,6 +40,7 @@ public class HighlanderClient extends DefaultHttpClient {
             HttpConnectionParams.setConnectionTimeout(httpParameters, CONNECTION_TIMEOUT);
             HttpConnectionParams.setSoTimeout(httpParameters, SOCKET_TIMEOUT);
             HttpProtocolParams.setUseExpectContinue(httpParameters, false);
+            HttpProtocolParams.setUserAgent(httpParameters, userAgentString + " " + HttpProtocolParams.getUserAgent(httpParameters));
 
             SchemeRegistry schemeRegistry = new SchemeRegistry();
 
@@ -54,4 +55,17 @@ public class HighlanderClient extends DefaultHttpClient {
         }
         return instance;
     }
+
+
+    private static String userAgentString = "Highlander";
+
+    public static String getUserAgentString() {
+        return userAgentString;
+    }
+
+    public static void setUserAgentString(String userAgentString) {
+        HighlanderClient.userAgentString = userAgentString;
+    }
+
+
 }
