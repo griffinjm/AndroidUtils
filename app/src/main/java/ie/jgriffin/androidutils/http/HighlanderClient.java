@@ -59,16 +59,16 @@ public class HighlanderClient extends DefaultHttpClient {
 
     private static String userAgentString = "Highlander";
 
-    public static String getUserAgentString() {
+    public String getUserAgentString() {
         return userAgentString;
     }
 
-    public static void setUserAgentString(String userAgentString) {
+    public synchronized void setUserAgentString(String userAgentString) {
         HighlanderClient.userAgentString = userAgentString;
         updateUAString();
     }
 
-    private static void updateUAString(){
+    private void updateUAString(){
         HttpParams params = instance.getParams();
         HttpProtocolParams.setUserAgent(params, userAgentString + " " + HttpProtocolParams.getUserAgent(params));
     }
