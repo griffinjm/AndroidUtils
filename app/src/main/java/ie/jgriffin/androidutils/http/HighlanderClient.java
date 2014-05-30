@@ -69,8 +69,11 @@ public class HighlanderClient extends DefaultHttpClient {
     }
 
     private void updateUAString(){
-        HttpParams params = instance.getParams();
-        HttpProtocolParams.setUserAgent(params, userAgentString);
+        /*
+        getInstance has been called at this stage
+        so the instance is not null and the params have been created
+         */
+        HttpProtocolParams.setUserAgent(instance.getParams(), userAgentString);
     }
 
 
