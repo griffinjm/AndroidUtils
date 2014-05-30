@@ -40,7 +40,7 @@ public class HighlanderClient extends DefaultHttpClient {
             HttpConnectionParams.setConnectionTimeout(httpParameters, CONNECTION_TIMEOUT);
             HttpConnectionParams.setSoTimeout(httpParameters, SOCKET_TIMEOUT);
             HttpProtocolParams.setUseExpectContinue(httpParameters, false);
-            HttpProtocolParams.setUserAgent(httpParameters, userAgentString + " " + HttpProtocolParams.getUserAgent(httpParameters));
+            HttpProtocolParams.setUserAgent(httpParameters, userAgentString);
 
             SchemeRegistry schemeRegistry = new SchemeRegistry();
 
@@ -70,7 +70,7 @@ public class HighlanderClient extends DefaultHttpClient {
 
     private void updateUAString(){
         HttpParams params = instance.getParams();
-        HttpProtocolParams.setUserAgent(params, userAgentString + " " + HttpProtocolParams.getUserAgent(params));
+        HttpProtocolParams.setUserAgent(params, userAgentString);
     }
 
 
