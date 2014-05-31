@@ -25,6 +25,11 @@ public class HighlanderClient extends DefaultHttpClient {
     private static final int HTTP_PORT = 80;
     private static final int HTTPS_PORT = 443;
 
+    public static final String DEFAULT_USER_AGENT_STRING = "Highlander";
+    public static final String HTTP = "http";
+    public static final String HTTPS = "https";
+
+    //There can be only one!
     private static HighlanderClient instance = null;
 
     public HighlanderClient(ClientConnectionManager ccm, HttpParams params) {
@@ -46,8 +51,8 @@ public class HighlanderClient extends DefaultHttpClient {
 
             SSLSocketFactory sslSocketFactory = SSLSocketFactory.getSocketFactory();
             sslSocketFactory.setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
-            schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), HTTP_PORT));
-            schemeRegistry.register(new Scheme("https", sslSocketFactory, HTTPS_PORT));
+            schemeRegistry.register(new Scheme(HTTP, PlainSocketFactory.getSocketFactory(), HTTP_PORT));
+            schemeRegistry.register(new Scheme(HTTPS, sslSocketFactory, HTTPS_PORT));
 
             ClientConnectionManager cm = new ThreadSafeClientConnManager(httpParameters, schemeRegistry);
 
@@ -57,7 +62,7 @@ public class HighlanderClient extends DefaultHttpClient {
     }
 
 
-    private static String userAgentString = "Highlander";
+    private static String userAgentString = DEFAULT_USER_AGENT_STRING;
 
     public String getUserAgentString() {
         return userAgentString;
