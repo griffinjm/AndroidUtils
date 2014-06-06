@@ -23,6 +23,25 @@ public class JacksonMapper {
     }
 
     /**
+     * Example method which deserializes a single object
+     * @param input JSON String representation of an object
+     * @return An object
+     */
+    public static Object deserializeObject(String input){
+        Object object = new Object();
+        try {
+            object = mapper.readValue(input, Object.class);
+        } catch (JsonMappingException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (JsonParseException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+        }
+        return object;
+    }
+
+    /**
      * Example method which deserializes a collection of objects of type Object
      * @param input JSON String representation of a collection of Objects
      * @return An ArrayList of Objects
