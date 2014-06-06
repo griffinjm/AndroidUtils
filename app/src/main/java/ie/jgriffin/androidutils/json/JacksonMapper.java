@@ -3,6 +3,7 @@ package ie.jgriffin.androidutils.json;
 import android.util.Log;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -58,5 +59,20 @@ public class JacksonMapper {
             Log.e(TAG, e.getMessage());
         }
         return objects;
+    }
+
+    /**
+     * Example method which serializes and Object to a JSON representation
+     * @param object The object to be serialized
+     * @return The JSON representation of the passed object
+     */
+    public static String serializeModelAssign(Object object) {
+        String result = "";
+        try {
+            result = mapper.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            Log.e(TAG, e.getMessage());
+        }
+        return result;
     }
 }
