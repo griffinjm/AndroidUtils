@@ -66,7 +66,7 @@ public class JacksonMapper {
      * @param object The object to be serialized
      * @return The JSON representation of the passed object
      */
-    public static String serializeModelAssign(Object object) {
+    public static String serializeObject(Object object) {
         String result = "";
         try {
             result = mapper.writeValueAsString(object);
