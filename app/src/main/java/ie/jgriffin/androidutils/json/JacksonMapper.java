@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,7 +63,7 @@ public class JacksonMapper {
     }
 
     /**
-     * Example method which serializes and Object to a JSON representation
+     * Example method which serializes an Object to a JSON representation
      * @param object The object to be serialized
      * @return The JSON representation of the passed object
      */
@@ -70,6 +71,21 @@ public class JacksonMapper {
         String result = "";
         try {
             result = mapper.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            Log.e(TAG, e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * Example method which serializes an ArrayList of Objects to its JSON representation
+     * @param objects The ArrayList of Objects
+     * @return The JSON representation of the ArrayList
+     */
+    public static String serializeObjects(ArrayList<Object> objects) {
+        String result = "";
+        try {
+            result = mapper.writerWithType(new TypeReference<ArrayList<Object>>() {}).writeValueAsString(objects);
         } catch (JsonProcessingException e) {
             Log.e(TAG, e.getMessage());
         }
