@@ -28,6 +28,7 @@ public class HighlanderClient extends DefaultHttpClient {
     public static final String DEFAULT_USER_AGENT_STRING = "Highlander";
     public static final String HTTP = "http";
     public static final String HTTPS = "https";
+    private static String userAgentString = DEFAULT_USER_AGENT_STRING;
 
     //There can be only one!
     private static HighlanderClient instance = null;
@@ -62,7 +63,7 @@ public class HighlanderClient extends DefaultHttpClient {
     }
 
 
-    private static String userAgentString = DEFAULT_USER_AGENT_STRING;
+
 
     public String getUserAgentString() {
         return userAgentString;
