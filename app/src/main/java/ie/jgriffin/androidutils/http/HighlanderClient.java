@@ -32,7 +32,7 @@ public class HighlanderClient extends DefaultHttpClient {
     //There can be only one!
     private static HighlanderClient instance = null;
 
-    public HighlanderClient(ClientConnectionManager ccm, HttpParams params) {
+    private HighlanderClient(ClientConnectionManager ccm, HttpParams params) {
         super(ccm, params);
     }
 
