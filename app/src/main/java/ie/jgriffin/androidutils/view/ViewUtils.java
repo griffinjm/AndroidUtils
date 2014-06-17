@@ -2,10 +2,12 @@ package ie.jgriffin.androidutils.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 /**
  * Created by JGriffin on 14/06/2014.
@@ -77,6 +79,41 @@ public class ViewUtils {
     public static void openKeyboard(Activity activity, View view){
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+
+    /**
+     * Utility method to show a short toast to the user.
+     *
+     * @param context Current context of the application.
+     * @param message Message to display to the user.
+     */
+    public static void showStandardToastShort(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Utility method to show a toast to the user.
+     * This toast is customised to display for the specified time only.
+     *
+     * @param context Current context of the application.
+     * @param message Message to display to the user.
+     */
+    public static void showCustomLengthToastShort(Context context, String message) {
+        //custom display time
+        final long DISPLAY_TIME = 500;//millis
+        final Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+
+        toast.show();
+
+        //setDuration here using a handler to cancel after DISPLAY_TIME
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, DISPLAY_TIME);
     }
 
 }
