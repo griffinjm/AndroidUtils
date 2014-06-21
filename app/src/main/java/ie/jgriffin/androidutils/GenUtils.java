@@ -127,6 +127,12 @@ public class GenUtils {
         }
     }
 
+    /**
+     * Calculate the number of days between two timestamps
+     * @param time The start time
+     * @param time2 The end time
+     * @return A long representing the number of days elapsed
+     */
     public static long calculateDaysBetween(long time, long time2) {
         return (time2 - time) / MILLIS_IN_DAY;
     }
