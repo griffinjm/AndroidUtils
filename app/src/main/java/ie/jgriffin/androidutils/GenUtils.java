@@ -123,7 +123,7 @@ public class GenUtils {
                                                 String secondsAgoString, String minutesAgoString,
                                                 String hoursAgoString, String daysAgoString) {
 
-        time = System.currentTimeMillis() - time;
+        time = calculateTimeAgo(time);
         if (time < MILLIS_IN_SECOND) {
             return justNowString;
         } else if (time < MILLIS_IN_MINUTE) {
