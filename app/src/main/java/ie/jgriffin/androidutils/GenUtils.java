@@ -167,4 +167,16 @@ public class GenUtils {
     public static long calculateDaysBetween(long time, long time2) {
         return (time2 - time) / MILLIS_IN_DAY;
     }
+
+    /**
+     * Removes any parentheses in a string.
+     *
+     * @param str string to be modified.
+     * @return modified string.
+     */
+    public static String stripParentheses(String str) {
+        str = str.replace("[", "");
+        str = str.replace("]", "");
+        return str;
+    }
 }
