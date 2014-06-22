@@ -104,11 +104,41 @@ public class GenUtils {
      * @return A string which should have the format "X days ago"
      */
     public static String calculateDaysAgoString(long time, String daysAgoString) {
-        String result;
         time = calculateTimeAgo(time);
         time = time / MILLIS_IN_DAY;
-        result = Long.toString(time) + " " + daysAgoString;
-        return result;
+        return Long.toString(time) + " " + daysAgoString;
+    }
+
+
+    /**
+     * @param time             The time to parse and display
+     * @param justNowString    The localised string which equates to "just now"
+     * @param secondsAgoString The localised string which equates to "seconds ago"
+     * @param minutesAgoString The localised string which equates to "minutes ago"
+     * @param hoursAgoString   The localised string which equates to "hours ago"
+     * @param daysAgoString    The localised string which equates to "days ago"
+     * @return An apt String representation of the amount of time that has elapsed.
+     */
+    public static String createRecentTimeString(long time, String justNowString,
+                                                String secondsAgoString, String minutesAgoString,
+                                                String hoursAgoString, String daysAgoString) {
+
+        time = System.currentTimeMillis() - time;
+        if (time < MILLIS_IN_SECOND) {
+            return justNowString;
+        } else if (time < MILLIS_IN_MINUTE) {
+            time = time / MILLIS_IN_SECOND;
+            return Long.toString(time) + " " + secondsAgoString;
+        } else if (time < MILLIS_IN_HOUR) {
+            time = time / MILLIS_IN_MINUTE;
+            return Long.toString(time) + " " + minutesAgoString;
+        } else if (time < MILLIS_IN_DAY) {
+            time = time / MILLIS_IN_HOUR;
+            return Long.toString(time) + " " + hoursAgoString;
+        } else {
+            time = time / MILLIS_IN_DAY;
+            return Long.toString(time) + " " + daysAgoString;
+        }
     }
 
     /**
@@ -129,7 +159,8 @@ public class GenUtils {
 
     /**
      * Calculate the number of days between two timestamps
-     * @param time The start time
+     *
+     * @param time  The start time
      * @param time2 The end time
      * @return A long representing the number of days elapsed
      */
