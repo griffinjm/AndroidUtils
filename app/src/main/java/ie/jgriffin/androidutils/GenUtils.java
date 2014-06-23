@@ -60,6 +60,21 @@ public class GenUtils {
         return (c > 47 && c < 58);
     }
 
+    /**
+     * Get the first number in a string and cast it as a long
+     * @param str The String to search for a number
+     * @return The number from the string or zero if not found
+     */
+    public static long getLongFromString(String str) {
+        long found = 0;
+        Pattern p = Pattern.compile("-?\\d+");
+        Matcher m = p.matcher(str);
+        if (m.find()) {
+            found = Long.parseLong(m.group());
+        }
+        return found;
+    }
+
 
     /**
      * Parses and returns numbers found within a string.
