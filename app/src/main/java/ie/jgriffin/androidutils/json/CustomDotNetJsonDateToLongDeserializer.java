@@ -14,10 +14,10 @@ import ie.jgriffin.androidutils.GenUtils;
 /**
  * Created by JGriffin on 23/06/2014.
  */
-public class CustomASPDateToLongDeserializer extends JsonDeserializer<Long> {
+public class CustomDotNetJsonDateToLongDeserializer extends JsonDeserializer<Long> {
 
     //dummy constructor for proguard
-    public CustomASPDateToLongDeserializer() {
+    public CustomDotNetJsonDateToLongDeserializer() {
     }
 
     @Override
