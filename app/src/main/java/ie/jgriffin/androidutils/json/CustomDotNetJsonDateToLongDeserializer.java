@@ -25,9 +25,9 @@ public class CustomDotNetJsonDateToLongDeserializer extends JsonDeserializer<Lon
         try {
             return GenUtils.getLongFromString(jsonParser.getText());
         } catch (JsonParseException e) {
-            Log.e(this.getClass().getSimpleName(), e.getMessage());
+            Log.e(this.getClass().getCanonicalName(), e.getMessage());
         } catch (IOException e) {
-            Log.e(this.getClass().getSimpleName(), e.getMessage());
+            Log.e(this.getClass().getCanonicalName(), e.getMessage());
         }
         return 0L;
     }
