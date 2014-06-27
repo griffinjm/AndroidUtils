@@ -14,15 +14,16 @@ import java.util.GregorianCalendar;
 /**
  * Created by JGriffin on 27/06/2014.
  */
-public class CustomDateSerializer extends JsonSerializer<GregorianCalendar> {
-    
+public class CustomGregorianCalendarSerializer extends JsonSerializer<GregorianCalendar> {
+
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     //dummy constructor for proguard
-    public CustomDateSerializer(){}
+    public CustomGregorianCalendarSerializer() {
+    }
 
     @Override
-    public void serialize(GregorianCalendar gregorianCalendar, JsonGenerator jsonGenerator, SerializerProvider serializerProvider){
+    public void serialize(GregorianCalendar gregorianCalendar, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) {
         String formattedDate = dateFormat.format(gregorianCalendar.getTime());
         try {
             jsonGenerator.writeString(formattedDate);
