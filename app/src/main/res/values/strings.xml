@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AndroidUtils</string>
     <string name="date_picker_dialog_title">Set date</string>
+    <string name="time_picker_dialog_title">Set time</string>
     <string name="date_time_set">Set</string>
     <string name="cancel">Cancel</string>
 </resources>
